@@ -1,0 +1,168 @@
+# Examen Simulador EXANI-II con Retroalimentación Integrada
+# Ejecuta este programa para responder las 90 preguntas, obtener tu puntaje y ver la retroalimentación.
+
+# Estructura de datos: Lista de preguntas con opciones, respuesta correcta y explicación
+examen = [
+    # Área 1: Pensamiento Matemático (1-10)
+    {"pregunta": "1. En la serie numérica 2, 5, 10, 17, 26, ¿cuál es el siguiente número?", "opciones": ["A) 35", "B) 37", "C) 39"], "correcta": "B", "explicacion": "Patrón: +3, +5, +7, +9, +11. Siguiente: 26+11=37."},
+    {"pregunta": "2. Si un triángulo tiene lados de 3 cm, 4 cm y 5 cm, ¿cuál es su área?", "opciones": ["A) 6 cm²", "B) 7.5 cm²", "C) 10 cm²"], "correcta": "A", "explicacion": "Triángulo rectángulo: Área = (3*4)/2 = 6 cm²."},
+    {"pregunta": "3. Resuelve: Si x + 2 = 5, ¿cuánto vale 3x - 1?", "opciones": ["A) 8", "B) 9", "C) 10"], "correcta": "A", "explicacion": "x=3, entonces 3*3-1=8. (Nota: Opciones ajustadas para corregir error previo)."},
+    {"pregunta": "4. En una secuencia de figuras: círculo, cuadrado, triángulo, círculo, ¿cuál sigue?", "opciones": ["A) Cuadrado", "B) Triángulo", "C) Círculo"], "correcta": "A", "explicacion": "Patrón cíclico: círculo, cuadrado, triángulo. Sigue cuadrado."},
+    {"pregunta": "5. ¿Cuál es el valor de 15% de 200?", "opciones": ["A) 20", "B) 25", "C) 30"], "correcta": "C", "explicacion": "15% de 200 = 0.15*200 = 30."},
+    {"pregunta": "6. Si un rectángulo tiene perímetro 20 cm y ancho 4 cm, ¿cuál es su largo?", "opciones": ["A) 6 cm", "B) 7 cm", "C) 8 cm"], "correcta": "A", "explicacion": "Perímetro = 2(l+w)=20, l=(20-8)/2=6 cm."},
+    {"pregunta": "7. Completa la analogía: 8 es a 64 como 5 es a...", "opciones": ["A) 20", "B) 25", "C) 30"], "correcta": "B", "explicacion": "Cuadrados: 8²=64, 5²=25."},
+    {"pregunta": "8. ¿Cuántos números pares hay del 1 al 20?", "opciones": ["A) 9", "B) 10", "C) 11"], "correcta": "B", "explicacion": "Pares: 2,4,...,20. Son 10 números."},
+    {"pregunta": "9. Resuelve la ecuación: 2y = 12, y = ?", "opciones": ["A) 4", "B) 6", "C) 8"], "correcta": "B", "explicacion": "2y=12, y=12/2=6."},
+    {"pregunta": "10. En un gráfico de barras con valores 3, 5, 2, ¿cuál es la media?", "opciones": ["A) 3", "B) 3.33", "C) 4"], "correcta": "B", "explicacion": "Media = (3+5+2)/3 = 3.33."},
+
+    # Área 2: Redacción Indirecta (11-20)
+    {"pregunta": "11. Completa: El estudiante ___ el libro antes de la clase.", "opciones": ["A) lee", "B) leía", "C) leyó"], "correcta": "B", "explicacion": "Pasado imperfecto (leía) para narración habitual."},
+    {"pregunta": "12. ¿Cuál es la oración correcta?", "opciones": ["A) Los niños juega en el parque.", "B) Los niños juegan en el parque.", "C) Los niños jugaba en el parque."], "correcta": "B", "explicacion": "Concordancia sujeto-verbo: niños (plural) + juegan."},
+    {"pregunta": "13. En '¡Hola, cómo estás!', ¿falta algo?", "opciones": ["A) Coma después de Hola", "B) Punto al final", "C) Nada, está correcto"], "correcta": "C", "explicacion": "La oración está correctamente puntuada."},
+    {"pregunta": "14. Sustituye en: El equipo ganó ___ partido.", "opciones": ["A) el", "B) un", "C) su"], "correcta": "A", "explicacion": "Artículo definido 'el' para contexto específico."},
+    {"pregunta": "15. ¿Cuál es el sinónimo de 'efímero'?", "opciones": ["A) Duradero", "B) Breve", "C) Eterno"], "correcta": "B", "explicacion": "Efímero significa de corta duración, sinónimo de breve."},
+    {"pregunta": "16. Corrige: 'Ayer fui al cine con mis amigo.'", "opciones": ["A) amigos", "B) amiga", "C) amigó"], "correcta": "A", "explicacion": "Concordancia en número: amigos (plural)."},
+    {"pregunta": "17. En un párrafo, ¿dónde va la coma? 'Aunque llovía fuimos al parque.'", "opciones": ["A) Después de Aunque", "B) Después de llovía", "C) Al final"], "correcta": "A", "explicacion": "Coma después de la subordinada 'Aunque llovía'."},
+    {"pregunta": "18. ¿Cuál es el antónimo de 'generoso'?", "opciones": ["A) Amable", "B) Egoísta", "C) Rico"], "correcta": "B", "explicacion": "Generoso (dar mucho) vs. egoísta (retener)."},
+    {"pregunta": "19. Completa el diálogo: '___ bien, gracias.'", "opciones": ["A) Estoy", "B) Estoy bien", "C) Bien estoy"], "correcta": "B", "explicacion": "Frase natural en español: 'Estoy bien'."},
+    {"pregunta": "20. En 'El libro que lei fue interesante.', corrige:", "opciones": ["A) lei → leí", "B) fue → es", "C) Nada"], "correcta": "A", "explicacion": "Falta acento: leí."},
+
+    # Área 3: Comprensión Lectora (21-30)
+    # Texto: "La ciudad crece rápidamente, pero enfrenta problemas de contaminación."
+    {"pregunta": "21. ¿Cuál es la idea principal del texto?", "opciones": ["A) Crecimiento urbano", "B) Problemas ambientales", "C) Ambas"], "correcta": "C", "explicacion": "El texto menciona crecimiento y contaminación."},
+    {"pregunta": "22. ¿Qué implica 'crece rápidamente'?", "opciones": ["A) Lento desarrollo", "B) Expansión acelerada", "C) Estancamiento"], "correcta": "B", "explicacion": "Rápidamente implica velocidad alta."},
+    {"pregunta": "23. El autor evalúa la ciudad como:", "opciones": ["A) Positiva total", "B) Mixta", "C) Negativa"], "correcta": "B", "explicacion": "Crecimiento (positivo) y contaminación (negativo)."},
+    {"pregunta": "24. Sinónimo de 'contaminación' en el contexto:", "opciones": ["A) Limpieza", "B) Polución", "C) Progreso"], "correcta": "B", "explicacion": "Polución es sinónimo de contaminación."},
+    {"pregunta": "25. ¿Qué pasaría si no se resuelve? (Inferencia)", "opciones": ["A) Mejora inmediata", "B) Crisis mayor", "C) Nada"], "correcta": "B", "explicacion": "Contaminación sin control lleva a crisis."},
+    {"pregunta": "26. El texto es de tipo:", "opciones": ["A) Narrativo", "B) Descriptivo", "C) Argumentativo"], "correcta": "B", "explicacion": "Describe una situación actual."},
+    {"pregunta": "27. ¿Cuál es el propósito?", "opciones": ["A) Entretener", "B) Informar y alertar", "C) Persuadir"], "correcta": "B", "explicacion": "Busca informar sobre el problema."},
+    {"pregunta": "28. Palabra clave: 'enfrenta'. Significa:", "opciones": ["A) Evita", "B) Confronta", "C) Ignora"], "correcta": "B", "explicacion": "Enfrenta implica lidiar con algo."},
+    {"pregunta": "29. Relación entre crecimiento y contaminación:", "opciones": ["A) Causa-efecto", "B) Igualdad", "C) Oposición"], "correcta": "A", "explicacion": "Crecimiento causa contaminación."},
+    {"pregunta": "30. Conclusión lógica: La ciudad necesita:", "opciones": ["A) Más expansión", "B) Soluciones ambientales", "C) Menos habitantes"], "correcta": "B", "explicacion": "Soluciona el problema de contaminación."},
+
+    # Área 4: Premedicina (31-40)
+    {"pregunta": "31. ¿Cuál es la función principal del corazón?", "opciones": ["A) Digestión", "B) Bombeo de sangre", "C) Respiración"], "correcta": "B", "explicacion": "El corazón circula sangre."},
+    {"pregunta": "32. El sistema nervioso central incluye:", "opciones": ["A) Cerebro y médula", "B) Nervios periféricos", "C) Músculos"], "correcta": "A", "explicacion": "Cerebro y médula espinal forman el SNC."},
+    {"pregunta": "33. ¿Qué produce la insulina?", "opciones": ["A) Páncreas", "B) Hígado", "C) Riñón"], "correcta": "A", "explicacion": "Páncreas produce insulina."},
+    {"pregunta": "34. La mitosis es para:", "opciones": ["A) Reproducción sexual", "B) División celular somática", "C) Mutaciones"], "correcta": "B", "explicacion": "Mitosis divide células no reproductivas."},
+    {"pregunta": "35. ¿Cuál es el hueso más largo del cuerpo?", "opciones": ["A) Fémur", "B) Tibia", "C) Radio"], "correcta": "A", "explicacion": "Fémur es el hueso más largo."},
+    {"pregunta": "36. El ADN se replica en la fase:", "opciones": ["A) G1", "B) S", "C) G2"], "correcta": "B", "explicacion": "Fase S del ciclo celular."},
+    {"pregunta": "37. ¿Qué transporta la hemoglobina?", "opciones": ["A) Oxígeno", "B) Nutrientes", "C) Hormonas"], "correcta": "A", "explicacion": "Hemoglobina lleva oxígeno en sangre."},
+    {"pregunta": "38. El pH sanguíneo normal es:", "opciones": ["A) 7.4", "B) 7.0", "C) 8.0"], "correcta": "A", "explicacion": "pH normal: 7.35-7.45, aprox. 7.4."},
+    {"pregunta": "39. ¿Cuál es la unidad básica de vida?", "opciones": ["A) Átomo", "B) Célula", "C) Tejido"], "correcta": "B", "explicacion": "La célula es la unidad básica."},
+    {"pregunta": "40. La fotosíntesis ocurre en:", "opciones": ["A) Raíz", "B) Cloroplastos", "C) Núcleo"], "correcta": "B", "explicacion": "Cloroplastos contienen clorofila."},
+
+    # Área 5: Cálculo Diferencial e Integral (41-50)
+    {"pregunta": "41. ¿Cuál es la derivada de x²?", "opciones": ["A) 2x", "B) x", "C) 2"], "correcta": "A", "explicacion": "Derivada de x² = 2x."},
+    {"pregunta": "42. Integra ∫(3x) dx:", "opciones": ["A) (3/2)x² + C", "B) 3x² + C", "C) x³ + C"], "correcta": "A", "explicacion": "∫3x dx = (3/2)x² + C."},
+    {"pregunta": "43. Límite de (x→0) sin(x)/x =", "opciones": ["A) 0", "B) 1", "C) ∞"], "correcta": "B", "explicacion": "Límite estándar: sin(x)/x = 1."},
+    {"pregunta": "44. Derivada de sin(x):", "opciones": ["A) cos(x)", "B) -sin(x)", "C) tan(x)"], "correcta": "A", "explicacion": "Derivada de sin(x) = cos(x)."},
+    {"pregunta": "45. Área bajo y=2x de 0 a 1:", "opciones": ["A) 1", "B) 2", "C) 0.5"], "correcta": "A", "explicacion": "∫(0 a 1) 2x dx = x² |0 a 1 = 1."},
+    {"pregunta": "46. Regla de la cadena para (x³ + 1)²:", "opciones": ["A) 6x² (x³ + 1)", "B) 2(x³ + 1)", "C) 3x²"], "correcta": "A", "explicacion": "2(x³ + 1) * 3x² = 6x²(x³ + 1)."},
+    {"pregunta": "47. Integra ∫1 dx:", "opciones": ["A) x + C", "B) 1/x + C", "C) ln|x| + C"], "correcta": "A", "explicacion": "∫1 dx = x + C."},
+    {"pregunta": "48. Derivada implícita: x² + y² = 1, dy/dx =", "opciones": ["A) -x/y", "B) y/x", "C) -y/x"], "correcta": "A", "explicacion": "2x + 2y dy/dx = 0, dy/dx = -x/y."},
+    {"pregunta": "49. Límite (x→∞) 1/x =", "opciones": ["A) 0", "B) 1", "C) ∞"], "correcta": "A", "explicacion": "1/x tiende a 0 cuando x crece."},
+    {"pregunta": "50. Volumen de revolución: y=x de 0 a 1 alrededor de x:", "opciones": ["A) π/2", "B) π", "C) 2π"], "correcta": "A", "explicacion": "Volumen = π∫(0 a 1) x² dx = π/2."},
+
+    # Área 6: Física (51-60)
+    {"pregunta": "51. Ley de Newton: F = ma, si F=10 N, m=2 kg, a=?", "opciones": ["A) 5 m/s²", "B) 10 m/s²", "C) 20 m/s²"], "correcta": "A", "explicacion": "a = F/m = 10/2 = 5 m/s²."},
+    {"pregunta": "52. Velocidad de la luz en vacío:", "opciones": ["A) 3x10^8 m/s", "B) 3x10^6 m/s", "C) 3x10^10 m/s"], "correcta": "A", "explicacion": "Constante: 3x10^8 m/s."},
+    {"pregunta": "53. Energía potencial: mgh, si m=1 kg, g=10, h=5:", "opciones": ["A) 50 J", "B) 5 J", "C) 10 J"], "correcta": "A", "explicacion": "Ep = mgh = 1*10*5 = 50 J."},
+    {"pregunta": "54. Ondas: frecuencia f = 1/T, si T=2 s:", "opciones": ["A) 0.5 Hz", "B) 2 Hz", "C) 1 Hz"], "correcta": "A", "explicacion": "f = 1/2 = 0.5 Hz."},
+    {"pregunta": "55. Carga eléctrica unidad:", "opciones": ["A) Coulomb", "B) Volt", "C) Ohm"], "correcta": "A", "explicacion": "Unidad de carga: Coulomb."},
+    {"pregunta": "56. Caída libre: s = (1/2)gt², t para s=5 m (g=10):", "opciones": ["A) 1 s", "B) 2 s", "C) 0.5 s"], "correcta": "A", "explicacion": "t = √(2s/g) = √(10/10) = 1 s."},
+    {"pregunta": "57. Refracción: n = c/v, mayor n significa:", "opciones": ["A) Mayor velocidad", "B) Menor velocidad", "C) Igual"], "correcta": "B", "explicacion": "Mayor n implica menor velocidad."},
+    {"pregunta": "58. Campo magnético: unidad Tesla, atrae:", "opciones": ["A) Cargas", "B) Metales ferrosos", "C) Todo"], "correcta": "B", "explicacion": "Tesla afecta metales ferrosos."},
+    {"pregunta": "59. Trabajo W = F d cosθ, si θ=90°:", "opciones": ["A) Máximo", "B) Cero", "C) Mínimo"], "correcta": "B", "explicacion": "cos(90°)=0, trabajo = 0."},
+    {"pregunta": "60. Momento lineal p = mv, conservado en:", "opciones": ["A) Colisión elástica", "B) Solo elástica", "C) Ninguna"], "correcta": "A", "explicacion": "Conservado en colisiones elásticas e inelásticas."},
+
+    # Área 7: Probabilidad (61-70)
+    {"pregunta": "61. Probabilidad de cara en moneda:", "opciones": ["A) 0.5", "B) 1", "C) 0"], "correcta": "A", "explicacion": "P(cara) = 1/2 = 0.5."},
+    {"pregunta": "62. Eventos mutuamente excluyentes: P(A o B) =", "opciones": ["A) P(A) + P(B)", "B) P(A) * P(B)", "C) P(A) - P(B)"], "correcta": "A", "explicacion": "Suma para eventos excluyentes."},
+    {"pregunta": "63. En dados, P(par) =", "opciones": ["A) 0.5", "B) 1/3", "C) 1/6"], "correcta": "A", "explicacion": "3/6 números son pares."},
+    {"pregunta": "64. Distribución binomial: n=1, p=0.5, P(éxito) =", "opciones": ["A) 0.5", "B) 0.25", "C) 1"], "correcta": "A", "explicacion": "P(éxito) = 0.5 para n=1."},
+    {"pregunta": "65. P(A|B) = P(A y B)/P(B), si independientes:", "opciones": ["A) P(A)", "B) 0", "C) 1"], "correcta": "A", "explicacion": "Si independientes, P(A|B) = P(A)."},
+    {"pregunta": "66. Urna con 3 rojas, 2 azules, P(roja) =", "opciones": ["A) 3/5", "B) 2/5", "C) 1/2"], "correcta": "A", "explicacion": "P(roja) = 3/(3+2) = 3/5."},
+    {"pregunta": "67. Probabilidad condicional: Si llueve (0.3), P(salir|llueve)=0.2, P(salir y llueve)=", "opciones": ["A) 0.06", "B) 0.5", "C) 0.3"], "correcta": "A", "explicacion": "P(A y B) = P(B) * P(A|B) = 0.3 * 0.2 = 0.06."},
+    {"pregunta": "68. Esperanza E(X) para X=1 (p=0.4), X=2 (p=0.6):", "opciones": ["A) 1.6", "B) 1.2", "C) 2"], "correcta": "A", "explicacion": "E(X) = 1*0.4 + 2*0.6 = 1.6."},
+    {"pregunta": "69. Eventos independientes: P(A y B) =", "opciones": ["A) P(A)P(B)", "B) P(A)+P(B)", "C) P(A)/P(B)"], "correcta": "A", "explicacion": "P(A y B) = P(A)P(B) si independientes."},
+    {"pregunta": "70. En cartas, P(as de corazones) =", "opciones": ["A) 1/52", "B) 1/4", "C) 13/52"], "correcta": "A", "explicacion": "1 as de corazones en 52 cartas."},
+
+    # Área 8: Estadística (71-80)
+    {"pregunta": "71. Media de 2, 4, 6:", "opciones": ["A) 4", "B) 3", "C) 5"], "correcta": "A", "explicacion": "Media = (2+4+6)/3 = 4."},
+    {"pregunta": "72. Moda de 1,2,2,3:", "opciones": ["A) 1", "B) 2", "C) 3"], "correcta": "B", "explicacion": "Moda es el valor más frecuente: 2."},
+    {"pregunta": "73. Desviación estándar mide:", "opciones": ["A) Dispersión", "B) Centralidad", "C) Correlación"], "correcta": "A", "explicacion": "Mide la dispersión de datos."},
+    {"pregunta": "74. Muestra vs. población: Muestra es:", "opciones": ["A) Total", "B) Subconjunto", "C) Media"], "correcta": "B", "explicacion": "Muestra es un subconjunto de la población."},
+    {"pregunta": "75. Correlación positiva:", "opciones": ["A) Aumenta juntos", "B) Disminuye", "C) Ninguna"], "correcta": "A", "explicacion": "Variables aumentan juntas."},
+    {"pregunta": "76. Mediana de 1,3,5,7,9:", "opciones": ["A) 3", "B) 5", "C) 7"], "correcta": "B", "explicacion": "Mediana es el valor central: 5."},
+    {"pregunta": "77. Gráfico de barras para:", "opciones": ["A) Datos categóricos", "B) Continuos", "C) Tiempo"], "correcta": "A", "explicacion": "Barras para categorías."},
+    {"pregunta": "78. Intervalo de confianza: Mayor amplitud con:", "opciones": ["A) Mayor n", "B) Menor confianza", "C) Mayor varianza"], "correcta": "C", "explicacion": "Mayor varianza aumenta amplitud."},
+    {"pregunta": "79. Hipótesis nula H0:", "opciones": ["A) Rechazada", "B) Asumida verdadera", "C) Alternativa"], "correcta": "B", "explicacion": "H0 se asume verdadera inicialmente."},
+    {"pregunta": "80. Percentil 50 =", "opciones": ["A) Mediana", "B) Media", "C) Moda"], "correcta": "A", "explicacion": "Percentil 50 es la mediana."},
+
+    # Área 9: Derecho (81-90)
+    {"pregunta": "81. Constitución mexicana: Año de promulgación.", "opciones": ["A) 1917", "B) 1824", "C) 1857"], "correcta": "A", "explicacion": "Promulgada en 1917."},
+    {"pregunta": "82. Derechos humanos: Fuente principal.", "opciones": ["A) Constitución", "B) Códigos penales", "C) Leyes federales"], "correcta": "A", "explicacion": "Constitución es la base."},
+    {"pregunta": "83. Contrato: Elemento esencial.", "opciones": ["A) Consentimiento", "B) Dinero", "C) Testigos"], "correcta": "A", "explicacion": "Consentimiento es esencial."},
+    {"pregunta": "84. Delito: Acción típica, antijurídica, culpable. ¿Falta?", "opciones": ["A) Punible", "B) Civil", "C) Moral"], "correcta": "A", "explicacion": "Delito debe ser punible."},
+    {"pregunta": "85. Poder judicial: Órgano superior.", "opciones": ["A) SCJN", "B) Congreso", "C) Ejecutivo"], "correcta": "A", "explicacion": "Suprema Corte de Justicia."},
+    {"pregunta": "86. Obligación: Fuente.", "opciones": ["A) Contrato o ley", "B) Solo contrato", "C) Solo tradición"], "correcta": "A", "explicacion": "Contrato o ley generan obligaciones."},
+    {"pregunta": "87. Estado de derecho: Principio.", "opciones": ["A) Sometimiento a la ley", "B) Anarquía", "C) Absolutismo"], "correcta": "A", "explicacion": "Todos sujetos a la ley."},
+    {"pregunta": "88. Amparo: Procedimiento para.", "opciones": ["A) Proteger derechos constitucionales", "B) Penal", "C) Familiar"], "correcta": "A", "explicacion": "Amparo protege derechos."},
+    {"pregunta": "89. Propiedad: Forma de adquisición.", "opciones": ["A) Prescripción", "B) Robo", "C) Donación inválida"], "correcta": "A", "explicacion": "Prescripción es legal."},
+    {"pregunta": "90. Federalismo: División en México.", "opciones": ["A) Estados soberanos en lo interno", "B) Centralizado", "C) Unitario"], "correcta": "A", "explicacion": "Estados tienen autonomía interna."}
+]
+
+# Lista para almacenar las respuestas del usuario
+respuestas_usuario = []
+
+# Función para mostrar preguntas y capturar respuestas
+print("Examen Simulador EXANI-II")
+print("Instrucciones: Ingresa A, B o C para cada pregunta. Presiona Enter para continuar.")
+print("Tiempo sugerido: 3 horas. ¡Buena suerte!\n")
+
+for i, item in enumerate(examen, 1):
+    # Mostrar pregunta y opciones
+    print(f"\n{item['pregunta']}")
+    for opcion in item['opciones']:
+        print(opcion)
+    
+    # Capturar respuesta
+    while True:
+        respuesta = input("Tu respuesta (A, B, C): ").strip().upper()
+        if respuesta in ['A', 'B', 'C']:
+            respuestas_usuario.append(respuesta)
+            break
+        else:
+            print("Por favor, ingresa A, B o C.")
+
+# Calcular aciertos
+aciertos = sum(1 for i in range(90) if respuestas_usuario[i] == examen[i]['correcta'])
+
+# Mostrar resultados generales
+porcentaje = (aciertos / 90) * 100
+print("\n=== Resultados del Examen EXANI-II ===")
+print(f"Aciertos: {aciertos}/90")
+print(f"Porcentaje: {porcentaje:.1f}%")
+if porcentaje >= 80:
+    print("¡Excelente! Estás bien preparado.")
+elif porcentaje >= 60:
+    print("Buen trabajo, pero repasa las áreas débiles.")
+else:
+    print("Necesitas practicar más. ¡Ánimo!")
+
+# Mostrar retroalimentación detallada
+print("\n=== Retroalimentación por Pregunta ===")
+for i in range(90):
+    correcta = examen[i]['correcta']
+    usuario = respuestas_usuario[i]
+    print(f"\nPregunta {i+1}: {examen[i]['pregunta']}")
+    print(f"Tu respuesta: {usuario}")
+    print(f"Respuesta correcta: {correcta}")
+    print(f"Explicación: {examen[i]['explicacion']}")
+    if usuario != correcta:
+        print("**Incorrecto**")
+    else:
+        print("**Correcto**")
+
+print("\n¡Fin del examen! Revisa las explicaciones para mejorar. Fuente: Inspirado en guías Ceneval 2023-2025.")
